@@ -106,7 +106,7 @@ function updateTime() {
         const dateElement = weatherCard.querySelector('.date');
         const timeElement = weatherCard.querySelector('.time');
         dateElement.textContent = date;
-        timeElement.textContent = time;
+        
     }
 }
 
