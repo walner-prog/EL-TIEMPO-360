@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Your description">
+    <meta name="author" content="Your name">
+
+   
+	<meta property="og:site_name" content="" /> 
+	<meta property="og:site" content="" />
+	<meta property="og:title" content=""/> 
+	<meta property="og:description" content="" /> 
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" /> 
+	<meta name="twitter:card" content="summary_large_image"> 
+
+    <!-- Webpage Title -->
+    <title>Tiempo360</title>
+    
+    <!-- Styles -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/momentjs/2.13.0/moment-timezone-with-data.min.js"></script>
+      <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="api.css">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="images/TIEMPO.png">
+</head>
+<body>
+
+    
+     <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Navegación principal">
+        <div class="container">
+    
+            <!-- Logo de Imagen -->
+            <a class="navbar-brand logo-image text-decoration-none" style="font-size: 35px;" href="index.html">Tiempo <span class="color-purpura">360</span></a>
+            
+            <!-- Logo de Texto - Usa esto si no tienes un logo gráfico -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Elma</a> -->
+    
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#outdoor-opportunities">Oportunidades al aire libre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#indoor-planning">Pronóstico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#map">Mapas</a>
+                    </li>
+                  
+                    
+                   
+                </ul>
+
+            </div> <!-- fin de navbar-collapse -->
+        </div> <!-- fin de container -->
+    </nav>
+    <!-- end of navbar -->
+    <!-- end of navigation -->
+
+      
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                
+                    <h2 class="color-purpura ">Estado del Clima </h2>
+                <div class="form-group  col-lg-8">
+
+                 <label for="city-select " class="text-white">Selecciona una ciudad:</label>
+                 <select id="city-select" class="form-control ">
+                <option value="Managua">Managua</option>
+                <option value="Boaco">Boaco</option>
+                <option value="Granada">Granada</option>
+                <option value="Chinandega">Chinandega</option>
+                <option value="Juigalpa">Chontales</option>
+                <option value="Esteli">Estelí</option>
+                <option value="San Marcos">Carazo</option>
+                <option value="Granada">Granada</option>
+                <option value="Jinotega">Jinotega</option>
+                <option value="Nagarote">León</option>
+                
+                <option value="Masaya">Masaya</option>
+                <option value="Matagalpa">Matagalpa</option>
+                <option value="Ocotal">Nueva Segovia</option>
+               
+                <option value="Rivas">Rivas</option>
+                <option value="Bluefields">Costa Caribe Sur</option>
+                <option value="Puerto Cabezas">Costa Caribe Norte</option>
+                
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Paris">Paris</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Moscow">Moscow</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Buenos Aires">Buenos Aires</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Mexico City">Mexico City</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Chicago Heights">Chicago</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Miami Beach">Miami </option>
+                <option value="Sao Paulo">Sao Paulo</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="Bangkok">Bangkok</option>
+                <option value="Seoul">Seoul</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Lima">Lima</option>
+                 </select>
+               </div>
+             </div> 
+                <div id="weather-card" class="weather-card col-lg-4 col-md-8 col-sm-4 mt-4 "></div>
+               
+                <!--Aca se muestra dinamicamnete el clima de cada ciudad-->
+                <div class="col-lg-4">
+                    <div id="weather-overview" class=" bg-success card-body text-white mt-4"></div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+
+    </header> <!-- end of header -->
+    
+
+
+  <!-- Introducción -->
+<div id="intro" class="basic-1 bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>Descubre el Tiempo360</h1>
+                <div class="text-container">
+                    <p>Encuentra todo lo que necesitas saber sobre el clima en un solo lugar. Desde datos en tiempo real hasta pronósticos extendidos por meses o semanas, te ofrecemos información detallada y precisa para ayudarte a planificar tus actividades al aire libre, viajes y más.</p>
+                </div> <!-- fin de text-container -->
+            </div> <!-- fin de col -->
+            <div class="col-lg-8">
+               
+                <div id="map-container"></div> 
+                </div> <!-- fin de text-container -->
+            </div> <!-- fin de col -->
+        </div> <!-- fin de row -->
+    </div> <!-- fin de container -->
+</div> <!-- fin de basic-1 -->
+<!-- fin de introducción -->
+
+
+
+
+   <!-- Proyecto 2 -->
+      <div class="basic-3 bg-gray" id="indoor-planning">
+    <div class="container">
+        <div class="row">
+            <h3>Mas Datos del clima  actual</h3>
+            <div class="col-lg-5">
+               
+                   
+                <div class="card color-card">
+                    <div class="card-body">
+                      <h5 class="card-title" id="cityName"></h5>
+                      <hr>
+                      <img id="weatherIcon" src="" alt="Weather Icon" class="img-fluid">
+                      <hr>
+                      <p class="card-text " id="temperature"></p>
+                      <hr>
+                      <p class="card-text" id="weatherDescription"></p>
+                    
+                      <hr>
+                      <p class="card-text" id="humidity"></p>
+                      <hr>
+                      <p class="card-text" id="windSpeed"></p>
+                      <hr>
+                      <p class="card-text" id="windGust"></p>
+                      <hr>
+                      <p class="card-text" id="windDeg"></p>
+                      <hr>
+                      <p class="card-text" id="pressure"></p>
+                      <hr>
+                      <p class="card-text" id="visibility"></p>
+                      <hr>
+                     
+                      <p class="card-text" id="cloudBase"></p>
+                      <hr>
+                      <p class="card-text" id="sensacion"></p>
+                      <hr>
+                      <p class="card-text" id="dewPoint"></p>
+                      <hr>
+                  </div>
+                   
+                </div> 
+
+            </div>
+
+            <div class="chart-container-grafica col-lg-6 ml-md-2 mt-2">
+                     <canvas id="weatherChart" class="border border-2 border-success"></canvas>
+                  <br>
+                     <div class="container">
+                        <h3 class="text-center">Recomendaciones de Actividades basadas en Clima</h3>
+                        <form class="form-inline justify-content-center">
+                          <label for="ciudadSelect" class="mr-sm-2">Selecciona una ciudad:</label>
+                          <select class="form-control mb-2 mr-sm-2" id="ciudadSelect">
+                            <option value="Managua">Managua</option>
+                            <option value="Boaco">Boaco</option>
+                            <option value="Granada">Granada</option>
+                            <option value="Chinandega">Chinandega</option>
+                            <option value="Juigalpa">Juigalpa</option>
+                            <option value="Esteli">Esteli</option>
+                            <option value="San Marcos">San Marcos</option>
+                            <option value="Jinotega">Jinotega</option>
+                            <option value="Nagarote">Leon</option>
+                            <option value="Masaya">Masaya</option>
+                            <option value="Matagalpa">Matagalpa</option>
+                            <option value="Ocotal">Ocotal</option>
+                            <option value="Rivas">Rivas</option>
+                            <option value="Bluefields">Bluefields</option>
+                            <option value="Puerto Cabezas">Puerto Cabezas</option>
+                          </select>
+                          <button type="submit" class="btn btn-success mb-2">Consultar Clima</button>
+                        </form>
+                    
+                        <!-- Sección para mostrar actividades -->
+                        <div id="actividades-seca" class="text-center">
+                        
+                        </div>
+                        <div id="actividades-lluvia" class="text-center">
+                      
+                        </div>
+                      </div>
+                    
+             </div>
+           
+        </div> <!-- fin de row -->
+    </div> <!-- fin de container -->
+      </div> <!-- fin de basic-3 -->
+
+
+
+ 
+     <div id="projects" class="basic-2">
+        <div class="container">
+          <div class="row">
+                <div class="col-lg-12 ">
+                   <div id="hourly-forecast-card" class="forecast-card "></div> 
+                </div> <!-- fin de col -->
+           
+           </div> <!-- fin de row -->
+         </div> <!-- fin de container -->
+     </div> <!-- fin de basic-2 -->
+
+
+
+
+
+  <!-- Modal de Detalles -->
+    <div id="staticBackdrop" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="row">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <div class="col-lg-8">
+                    <div class="image-container">
+                       
+                    </div> <!-- fin de image-container -->
+                </div> <!-- fin de col -->
+                <div class="col-lg-4">
+                    <h3>Establecimiento de objetivos</h3>
+                    <hr>
+                    <p>La aplicación puede ayudarte a seguir fácilmente la evolución de tu desarrollo personal si te tomas el tiempo para configurarla.</p>
+                    <h4>Comentarios de los usuarios</h4>
+                    <p>Esta es una gran aplicación que puede ayudarte a ahorrar tiempo y hacer tu vida más fácil. Y ayudará a mejorar tu productividad.</p>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="d-flex">
+                            <i class="fas fa-chevron-right"></i>
+                            <div class="flex-grow-1">Panel de pantalla de inicio</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-chevron-right"></i>
+                            <div class="flex-grow-1">Informe gráfico de estadísticas</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-chevron-right"></i>
+                            <div class="flex-grow-1">Diseño de calendario de eventos</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-chevron-right"></i>
+                            <div class="flex-grow-1">Pantalla de detalles de ubicación</div>
+                        </li>
+                        <li class="d-flex">
+                            <i class="fas fa-chevron-right"></i>
+                            <div class="flex-grow-1">Interfaz de pasos de incorporación</div>
+                        </li>
+                    </ul>
+                    <a id="modalCtaBtn" class="btn-solid-reg" href="#contact">Contacto</a>
+                    <button type="button" class="btn-outline-reg" data-bs-dismiss="modal">Cerrar</button>
+                </div> <!-- fin de col -->
+            </div> <!-- fin de row -->
+        </div> <!-- fin de modal-content -->
+    </div> <!-- fin de modal-dialog -->
+    </div> <!-- fin de modal -->
+  <!-- fin de modal de detalles -->
+
+
+  <div class="basic-4" id="map">
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                 <h4>Mapa de Temperatura en Nicaragua</h4>
+                 <div class=" " id="map-container-temperatura"></div>
+            </div>
+        </div> <!-- fin de row -->
+    </div> <!-- fin de container -->
+</div> 
+
+ <!-- Proyecto 3 --> 
+
+    <div class="container">
+     <div class="row">
+         <div class="col-lg-12">
+             <div id="extended-forecast-card" class="forecast-card color-card"></div>
+         </div> <!-- fin de col -->
+         <div class="col-lg-6 ">
+                 <div id="air-quality" class="p-2 mt-5"></div>
+                 <div id="weather-alerts" class="   align-content-md-center"></div>
+         </div> <!-- fin de col -->
+     </div> <!-- fin de row -->
+  </div> <!-- fin de container -->
+
+
+
+
+   <!-- Pie de página -->
+   <div class="footer mt-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="footer-col first">
+            <h6>Acerca de EL TIEMPO 360</h6>
+            <p class="p-small">EL TIEMPO 360 te ofrece información meteorológica precisa y recomendaciones de actividades basadas en el clima para que puedas disfrutar de tus días al máximo. Nuestro objetivo es brindarte datos confiables y actualizados para que planifiques mejor tus actividades al aire libre.</p>
+          </div> <!-- end of footer-col -->
+          <div class="footer-col second">
+            <h6>Enlaces</h6>
+            <ul class="list-unstyled li-space-lg p-small">
+              <li>Importante: <a href="terminos_politicas.html">Términos, Condiciones y Política de Privacidad</a></li>
+            
+              <li>Menú: <a class="page-scroll" href="#header">Inicio</a>, <a class="page-scroll" href="#indoor-planning">Pronostico</a>, <a class="page-scroll" href="#map">Mapas</a></li>
+            </ul>
+          </div> <!-- end of footer-col -->
+          
+          <!--<div class="footer-col third">
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x"></i>
+              </a>
+            </span>
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x"></i>
+              </a>
+            </span>
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-pinterest-p fa-stack-1x"></i>
+              </a>
+            </span>
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-instagram fa-stack-1x"></i>
+              </a>
+            </span>-->
+            <p class="p-small">Nos encantaría saber de ti <a href="mailto:contact@eltiempo360.com"><strong>contact@eltiempo360.com</strong></a></p>
+          </div> <!-- end of footer-col -->
+        </div> <!-- end of col -->
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
+  </div> <!-- end of footer -->  
+  <!-- end of footer -->
+
+   <!-- Derechos de autor -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="p-small">Copyright © <a href="index.html">EL TIEMPO 360</a></p>
+            </div> 
+            
+            <div class="col-lg-12">
+                <p class="p-small">Este sitio fue desarrollado por : <a href="https://portafolio-two-lyart-39.vercel.app/">DEV WEB</a></p>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of copyright --> 
+<!-- end of copyright -->
+
+
+
+
+
+
+    
+
+   <!-- Botón Volver Arriba -->
+<button class=" text-white" onclick="topFunction()" id="myBtn">
+    <img src="images/up-arrow.png" alt="alternative">
+</button>
+<!-- end of back to top button -->
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="precipit-map.js"></script>
+    <script src="nubosid-map.js"></script>
+    <script src="recomendaciones-clima.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

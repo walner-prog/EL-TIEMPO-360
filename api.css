@@ -1,0 +1,174 @@
+
+:root {
+/* Variables para los colores */
+--color-1: #009688;
+--color-2: #7b1fa2;
+--color-3: #48dbfb;
+--color-4: #1dd1a1;
+--color-5: #5f27cd;
+--color-6: #9c27b0;
+--color-6: #4caf50;
+--color-6: #4caf50;
+/* Variables para estilos actuales */
+--current-bg: var(--bg-style-0);
+--current-color: var(--color-1);
+
+
+
+/*Colores para mi sitio web */
+}
+.color-h1{
+   
+    color:whitesmoke;
+}
+
+
+.color-verde{
+    --color-6: #4caf50;
+}
+
+.color-purpura{
+    color: #0f9b0f;
+  
+}
+
+.color-card{
+    color:  #1dd1a1;
+    background-color: #efe7ff;
+}
+
+.form-control:focus {
+    /* Estilos personalizados cuando el select está en foco */
+    color:#3A6073;
+    box-shadow: 0 0 0 0.2rem rgba(0, 4, 255, 0.185); /* Cambia el color del sombreado aquí */
+    border-color: rgba(0, 23, 92, 0.25); /* Cambia el color del borde aquí si lo deseas */
+}
+option {
+    color: #4caf50; /* Cambia el color del texto */
+    background-color: #16222A;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to top, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to top, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+option:hover {
+    color: #4caf50; /* Cambia el color del texto al pasar el mouse */
+    background-color: #38df59;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to top, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to top, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.weather-card {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+   
+}
+
+.style-card{
+    background-color: #2b2b4f;
+    color: #2b2b4f;
+}
+
+
+.weather-icon {
+    font-size: 50px;
+}
+
+.temp {
+    font-size: 27px;
+}
+.city {
+    font-size: 25px;
+    font-weight: bold;
+}
+.date-time {
+    font-size: 16px;
+    margin: 10px 0;
+}
+.details {
+    font-size: 14px;
+}
+.icon-small {
+    font-size: 20px;
+}
+
+.date, .time {
+    display: block;
+}
+.extended-forecast {
+    margin-top: 20px;
+}
+.text-color{
+    color:#ccc
+}
+
+
+
+#map-container {
+    height: 600px; /* Definir la altura deseada para el contenedor del mapa */
+  }
+  .legend {
+    background: white;
+    line-height: 1.5em;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 12px;
+    color: #555;
+  }
+  .legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+  }
+
+  #map-container-nubes {
+    height: 500px; /* Definir la altura deseada para el contenedor del mapa */
+  }
+  .legend-nubes {
+    background: white;
+    line-height: 1.5em;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 12px;
+    color: #555;
+  }
+  .legend-nubes i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+  }
+
+  #map-container-temperatura {
+    height: 700px; /* Definir la altura deseada para el contenedor del mapa */
+  }
+  .legend-temperatura {
+    background: white;
+    line-height: 1.5em;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 12px;
+    color: #555;
+  }
+  .legend-temperatura i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+  }

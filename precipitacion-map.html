@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Precipitaciones en Nicaragua</title>
+  <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <style>
+    #map-container {
+      height: 500px; /* Definir la altura deseada para el contenedor del mapa */
+    }
+    .legend {
+      background: white;
+      line-height: 1.5em;
+      padding: 6px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      font-size: 12px;
+      color: #555;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="col-lg-6" id="map-container"></div>
+
+<script>
+  // Inicializar el mapa en el contenedor específico con opciones personalizadas
+  var map = L.map('map-container', {
+    center: [12.8654, -85.2072], // Coordenadas del centro del mapa (Nicaragua)
+    zoom: 6, // Nivel de zoom por defecto
+    minZoom: 2, // Nivel de zoom mínimo
+    maxZoom: 19, // Nivel de zoom máximo
+    zoomControl: true, // Mostrar controles de zoom
+    scrollWheelZoom: false, // Deshabilitar el zoom con la rueda del mouse
+    doubleClickZoom: false, // Deshabilitar el zoom con doble clic
+    dragging: false, // Deshabilitar el arrastre del mapa
+    touchZoom: false // Deshabilitar el zoom táctil
+  });
+
+  // Agregar capa base de OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Agregar capa de precipitaciones de OpenWeatherMap
+  var precipitationLayer = L.tileLayer(`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=TU_API_KEY`, {
+    maxZoom: 19,
+    attribution: 'Map data &copy; <a href="https://openweathermap.org">OpenWeatherMap</a>'
+  }).addTo(map);
+
+  // Agregar leyenda de escala de precipitaciones
+  var legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'legend');
+    var precipitations = [0, 5, 10, 20, 50, 100]; // Cantidades de precipitaciones en mm
+    var colors = [
+      "#FFFFFF",
+      "#E0F3F8",
+      "#B2E2E2",
+      "#66C2A4",
+      "#2CA25F",
+      "#006D2C",
+    ];
+
+    div.innerHTML = '<strong>Precipitaciones (mm)</strong><br>';
+    for (var i = 0; i < precipitations.length; i++) {
+      div.innerHTML +=
+        '<i style="background:' + colors[i] + '"></i> ' +
+        precipitations[i] + (precipitations[i + 1] ? '&ndash;' + precipitations[i + 1] + '<br>' : '+');
+    }
+    return div;
+  };
+
+  legend.addTo(map);
+</script>
+
+</body>
+</html>

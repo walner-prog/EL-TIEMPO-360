@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos Meteorológicos por Capital</title>
+  <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Estilos personalizados -->
+  <style>
+    #map {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <label for="capital-select">Selecciona una capital:</label>
+  <select id="capital-select">
+    <option value="Managua" selected>Managua</option>
+    <option value="Buenos Aires">Buenos Aires</option>
+    <option value="Brasilia">Brasilia</option>
+    <option value="Ottawa">Ottawa</option>
+    <option value="Santiago">Santiago</option>
+    <option value="Beijing">Beijing</option>
+    <option value="Cairo">Cairo</option>
+    <option value="Paris">Paris</option>
+    <option value="Berlin">Berlin</option>
+    <option value="New Delhi">New Delhi</option>
+    <option value="Rome">Rome</option>
+    <option value="Tokyo">Tokyo</option>
+    <option value="Mexico City">Mexico City</option>
+    <option value="Amsterdam">Amsterdam</option>
+    <option value="Wellington">Wellington</option>
+    <option value="Oslo">Oslo</option>
+    <option value="Lima">Lima</option>
+    <option value="Moscow">Moscow</option>
+    <option value="Riyadh">Riyadh</option>
+    <option value="Pretoria">Pretoria</option>
+    <option value="Madrid">Madrid</option>
+    <option value="Stockholm">Stockholm</option>
+    <option value="Bern">Bern</option>
+    <option value="Bangkok">Bangkok</option>
+    <option value="Ankara">Ankara</option>
+    <option value="London">London</option>
+    <option value="Washington">Washington</option>
+    <option value="Bogotá">Bogotá</option>
+    <option value="Santiago">Santiago</option>
+    <option value="Caracas">Caracas</option>
+    <option value="Quito">Quito</option>
+    <option value="La Paz">La Paz</option>
+    <option value="San José">San José</option>
+    <option value="Panama City">Ciudad de Panamá</option>
+    <option value="San Salvador">San Salvador</option>
+    <option value="Tegucigalpa">Tegucigalpa</option>
+    <option value="Guatemala City">Ciudad de Guatemala</option>
+    <option value="Tegucigalpa">Tegucigalpa</option>
+    <option value="Quetzaltenango">Quetzaltenango</option>
+    <option value="Asunción">Asunción</option>
+    <option value="Montevideo">Montevideo</option>
+    <!-- Agrega más opciones para otras capitales si lo deseas -->
+  </select>
+</div>
+
+<div class=" col-lg-6" id="map"></div>
+
+<script>
+  // Inicializar el mapa en el centro del mundo
+  var map = L.map('map').setView([20, -95], 2);
+
+  // Agregar capa base de OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Función para obtener datos meteorológicos para una capital y mostrarlos en el mapa
+  function obtenerDatosMeteorologicos(capital) {
+    var coordenadasCapitales = {
+      "Managua": [12.147, -86.273],
+      "Buenos Aires": [-34.6037, -58.3816],
+      "Brasilia": [-15.7801, -47.9292],
+      "Ottawa": [45.4215, -75.6972],
+      "Santiago": [-33.4474, -70.6737],
+      "Beijing": [39.9042, 116.4074],
+      "Cairo": [30.0444, 31.2357],
+      "Paris": [48.8566, 2.3522],
+      "Berlin": [52.5200, 13.4050],
+      "New Delhi": [28.6139, 77.2090],
+      "Rome": [41.9028, 12.4964],
+      "Tokyo": [35.6895, 139.6917],
+      "Mexico City": [19.4326, -99.1332],
+      "Amsterdam": [52.3676, 4.9041],
+      "Wellington": [-41.2865, 174.7762],
+      "Oslo": [59.9139, 10.7522],
+      "Lima": [-12.0464, -77.0428],
+      "Moscow": [55.7558, 37.6176],
+      "Riyadh": [24.7136, 46.6753],
+      "Pretoria": [-25.7463, 28.1881],
+      "Madrid": [40.4168, -3.7038],
+      "Stockholm": [59.3293, 18.0686],
+      "Bern": [46.9480, 7.4474],
+      "Bangkok": [13.7563, 100.5018],
+      "Ankara": [39.9334, 32.8597],
+      "London": [51.5074, -0.1278],
+      "Washington": [38.9072, -77.0369],
+      "Bogotá": [4.7110, -74.0721],
+      "Santiago": [-33.4569, -70.6483],
+           "Caracas": [10.4806, -66.9036],
+        
+         "Quito": [-0.1807, -78.4678],
+  "La Paz": [-16.5062, -68.1305],
+  "San José": [9.9281, -84.0907],
+  "Panama City": [8.9824, -79.5199],
+  "San Salvador": [13.6929, -89.2182],
+  "Tegucigalpa": [14.0723, -87.1921],
+  "Guatemala City": [14.6349, -90.5069],
+  "Tegucigalpa": [14.0818, -87.2068],
+  "Quetzaltenango": [14.8379, -91.5215],
+  "Asunción": [-25.2637, -57.5759],
+  "Montevideo": [-34.9011, -56.1645],
+      
+      // Agrega más capitales con sus coordenadas si es necesario
+    };
+
+    // Obtener coordenadas de la capital seleccionada
+    var coordenadas = coordenadasCapitales[capital];
+    var latitud = coordenadas[0];
+    var longitud = coordenadas[1];
+
+    // Hacer una solicitud a la API de OpenWeatherMap
+    var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitud + '&lon=' + longitud + '&appid=3c743983734341f81c2486dcce043049&units=metric';
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        var temperatura = data.main.temp;
+        var velocidadViento = data.wind.speed;
+        var probPrecipitacion = data.weather[0].description;
+
+
+     // Traducir el valor de probPrecipitacion a español si es necesario
+if (probPrecipitacion === 'clear sky') {
+  probPrecipitacion = 'Cielo despejado';
+} else if (probPrecipitacion === 'few clouds') {
+  probPrecipitacion = 'Pocas nubes';
+} else if (probPrecipitacion === 'scattered clouds') {
+  probPrecipitacion = 'Nubes dispersas';
+} else if (probPrecipitacion === 'broken clouds') {
+  probPrecipitacion = 'Nublado parcialmente';
+} else if (probPrecipitacion === 'overcast clouds') {
+  probPrecipitacion = 'Nublado';
+} else if (probPrecipitacion === 'mist') {
+  probPrecipitacion = 'Neblina';
+} else if (probPrecipitacion === 'fog') {
+  probPrecipitacion = 'Niebla';
+} else if (probPrecipitacion === 'light rain') {
+  probPrecipitacion = 'Lluvia ligera';
+} else if (probPrecipitacion === 'moderate rain') {
+  probPrecipitacion = 'Lluvia moderada';
+} else if (probPrecipitacion === 'heavy intensity rain') {
+  probPrecipitacion = 'Lluvia intensa';
+} else if (probPrecipitacion === 'very heavy rain') {
+  probPrecipitacion = 'Lluvia muy intensa';
+} else if (probPrecipitacion === 'extreme rain') {
+  probPrecipitacion = 'Lluvia extrema';
+} else if (probPrecipitacion === 'freezing rain') {
+  probPrecipitacion = 'Lluvia helada';
+} else if (probPrecipitacion === 'light snow') {
+  probPrecipitacion = 'Nieve ligera';
+} else if (probPrecipitacion === 'snow') {
+  probPrecipitacion = 'Nieve';
+} else if (probPrecipitacion === 'heavy snow') {
+  probPrecipitacion = 'Nieve intensa';
+} else if (probPrecipitacion === 'sleet') {
+  probPrecipitacion = 'Aguanieve';
+} else if (probPrecipitacion === 'shower rain') {
+  probPrecipitacion = 'Lluvia con chubascos';
+} else if (probPrecipitacion === 'light intensity shower rain') {
+  probPrecipitacion = 'Chubascos de lluvia ligera';
+} else if (probPrecipitacion === 'shower snow') {
+  probPrecipitacion = 'Chubascos de nieve';
+} else if (probPrecipitacion === 'light rain and snow') {
+  probPrecipitacion = 'Lluvia y nieve ligera';
+} else if (probPrecipitacion === 'rain and snow') {
+  probPrecipitacion = 'Lluvia y nieve';
+} else if (probPrecipitacion === 'light shower snow') {
+  probPrecipitacion = 'Chubascos de nieve ligera';
+} else if (probPrecipitacion === 'shower sleet') {
+  probPrecipitacion = 'Aguanieve con chubascos';
+} else if (probPrecipitacion === 'thunderstorm with light rain') {
+  probPrecipitacion = 'Tormenta eléctrica con lluvia ligera';
+} else if (probPrecipitacion === 'thunderstorm with rain') {
+  probPrecipitacion = 'Tormenta eléctrica con lluvia';
+} else if (probPrecipitacion === 'thunderstorm with heavy rain') {
+  probPrecipitacion = 'Tormenta eléctrica con lluvia intensa';
+} else if (probPrecipitacion === 'light thunderstorm') {
+  probPrecipitacion = 'Tormenta eléctrica ligera';
+} else if (probPrecipitacion === 'thunderstorm') {
+  probPrecipitacion = 'Tormenta eléctrica';
+} else if (probPrecipitacion === 'heavy thunderstorm') {
+  probPrecipitacion = 'Tormenta eléctrica intensa';
+} else if (probPrecipitacion === 'ragged thunderstorm') {
+  probPrecipitacion = 'Tormenta eléctrica irregular';
+} else if (probPrecipitacion === 'thunderstorm with light drizzle') {
+  probPrecipitacion = 'Tormenta eléctrica con llovizna ligera';
+} else if (probPrecipitacion === 'thunderstorm with drizzle') {
+  probPrecipitacion = 'Tormenta eléctrica con llovizna';
+} else if (probPrecipitacion === 'thunderstorm with heavy drizzle') {
+  probPrecipitacion = 'Tormenta eléctrica con llovizna intensa';
+} else {
+  // Devolver la descripción original si no se encuentra una traducción
+  return probPrecipitacion;
+}
+
+        // Agregar marcador con los datos meteorológicos como etiqueta
+        L.marker([latitud, longitud]).addTo(map)
+          .bindPopup(`Capital: ${capital}<br>Temperatura: ${temperatura}°C<br>Viento: ${velocidadViento} km/h<br>Descripción: ${probPrecipitacion}`)
+          .openPopup();
+      })
+      .catch(error => {
+        console.error('Error al obtener datos meteorológicos:', error);
+      });
+  }
+
+  // Manejar el cambio en la selección de capital
+  document.getElementById('capital-select').addEventListener('change', function() {
+    var selectedCapital = this.value;
+    // Borrar marcadores existentes antes de agregar uno nuevo
+    map.eachLayer(function(layer) {
+      if (layer instanceof L.Marker) {
+        map.removeLayer(layer);
+      }
+    });
+    // Obtener y mostrar datos meteorológicos para la capital seleccionada
+    obtenerDatosMeteorologicos(selectedCapital);
+  });
+
+  // Obtener y mostrar datos meteorológicos para la capital predeterminada (Managua)
+  obtenerDatosMeteorologicos('Managua');
+</script>
+
+</body>
+</html>
+
+   

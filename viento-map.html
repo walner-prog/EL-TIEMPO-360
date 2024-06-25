@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Velocidad del Viento</title>
+  <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <style>
+    #map-container {
+      height: 500px; /* Definir la altura deseada para el contenedor del mapa */
+    }
+    .legend {
+      background: white;
+      line-height: 1.5em;
+      padding: 6px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      font-size: 12px;
+      color: #555;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="col-lg-6" id="map-container"></div>
+
+<script>
+  // Inicializar el mapa en el contenedor específico con opciones personalizadas
+  var map = L.map('map-container', {
+    center: [20, -95], // Coordenadas del centro del mapa (aproximadamente Ciudad de México)
+    zoom: 4, // Nivel de zoom por defecto
+    minZoom: 2, // Nivel de zoom mínimo
+    maxZoom: 19, // Nivel de zoom máximo
+    zoomControl: true, // Mostrar controles de zoom
+    scrollWheelZoom: true, // Habilitar el zoom con la rueda del mouse
+    doubleClickZoom: true, // Habilitar el zoom con doble clic
+    touchZoom: true // Habilitar el zoom táctil
+  });
+
+  // Agregar capa base de OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Agregar capa de velocidad del viento de OpenWeatherMap
+  var windSpeedLayer = L.tileLayer('https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=3c743983734341f81c2486dcce043049', {
+    maxZoom: 19,
+    attribution: 'Map data &copy; <a href="https://openweathermap.org">OpenWeatherMap</a>'
+  }).addTo(map);
+
+  // Agregar leyenda de escala de velocidad del viento
+  var legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'legend');
+    var speeds = [0, 10, 20, 30, 40, 50]; // Velocidades típicas del viento en km/h
+    var colors = [
+      "#FFFFFF",
+      "#CCE5FF",
+      "#DDC3F5",
+      "#DCABFD",
+      "#C689FF",
+      "#B934F7",
+    ];
+
+    div.innerHTML = '<strong>Velocidad del Viento (km/h)</strong><br>';
+    for (var i = 0; i < speeds.length; i++) {
+      div.innerHTML +=
+        '<i style="background:' + colors[i] + '"></i> ' +
+        speeds[i] + (speeds[i + 1] ? '&ndash;' + speeds[i + 1] + '<br>' : '+');
+    }
+    return div;
+  };
+
+  legend.addTo(map);
+</script>
+
+</body>
+</html>
