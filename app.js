@@ -616,8 +616,7 @@ function updateExtendedForecast(city) {
                                 <div class="col"><i class="fas fa-tachometer-alt"></i> Presión atmosférica: ${pressure} hPa</div>
                                 <div class="col"><i class="fas fa-cloud-showers-heavy"></i> lluvia ultimas 3h: ${rainAmount} mm</div>
                                 <div class="col"><i class="fas fa-cloud-rain"></i> Probabilidad de precipitación: ${precipitationProbability}</div>
-                                <div class="col"><i class="fas fa-sun"></i> Hora de salida del sol: ${sunrise}</div>
-                                <div class="col"><i class="fas fa-moon"></i> Hora del atardecer: ${sunset}</div>
+
                              
                             </div>
                         </details>
